@@ -5,9 +5,10 @@ import Signup from "./auth/Signup";
 import ForgetPassword from "./auth/ForgetPassword";
 import ResetPassword from "./auth/ResetPassword";
 import VerifyEmail from "./auth/VerifyEmail";
-import Navbar from "./shared/Navbar";
 import HeroSection from "./components/component/HeroSection";
 import MainLayout from "./Layout/MainLayout";
+import Profile from "./components/component/Profile";
+import SearchPage from "./components/component/SearchPage";
 
 const appRouter = createBrowserRouter([
   {
@@ -17,6 +18,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <HeroSection />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/search/:text",
+        element: <SearchPage />,
       },
     ],
   },
