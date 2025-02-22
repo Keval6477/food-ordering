@@ -1,4 +1,4 @@
-import { v2 as cloudinary } from "cloudinary";
+import { v2 as cloudinary, v2 } from "cloudinary";
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -7,3 +7,10 @@ cloudinary.config({
 });
 
 export default cloudinary;
+
+export const uploadImageOnCloudinary = async (file: Express.Multer.File) => {
+  const base64Image = Buffer.from(file.buffer).toString("base64");
+  const dataUri = `data:${file.mimetype};base64,${base64Image}`;
+  const uploadResponse = await cloudinary.uploader.upload(dataUri);
+  return uploadResponse.secure_url;
+};
