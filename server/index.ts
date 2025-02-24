@@ -5,6 +5,7 @@ dotenv.config();
 import connectDb from "./Db/dbConnection";
 import userRoutes from "./routes/user.routes";
 import restaurantRoutes from "./routes/restaurant.route";
+import menuRoutes from "./routes/menu.route";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import helmet from "helmet";
@@ -28,6 +29,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/restaurant", restaurantRoutes);
+app.use("/api/v1/menu", menuRoutes);
 
 const PORT = process.env.PORT || 3030;
 app.listen(PORT, () => {
